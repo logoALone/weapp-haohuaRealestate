@@ -1,0 +1,52 @@
+/* pages/mine/exchange/exchange.wxss */
+page {
+  background-color: #F2F2F2;
+}
+.exchangelist {
+  display: flex;
+  flex-direction: column;
+}
+.exchangelist_cell {
+  display: flex;
+  width: 710rpx;
+  height: 184rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  background-color: #FFFFFF;
+}
+.exchangelist_icon {
+  width: 180rpx;
+  height: 140rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.exchangelist_midle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.exchangelist_title {
+  color: #000000;
+  font-size: 13pt;
+  font-weight: bold;
+}
+.exchangelist_date {
+  color: #A5A5A5;
+  font-size: 9pt;
+}
+.exchangelist_record {
+  margin-left: 80rpx;
+  font-size: 13pt;
+  align-self: center;
+  color: #FF7B3A;
+  font-weight: bold;
+}
+.nomoredata {
+  width: 100%;
+  text-align: center;
+  color: #A5A5A5;
+  margin-top: 20rpx;
+  font-size: 11pt;
+}

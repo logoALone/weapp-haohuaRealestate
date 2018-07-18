@@ -1,0 +1,16 @@
+<template name="tabbar">
+   <view class='back'  style='background-image: url(http://house.haowuwang.cn/house/images/tuchu.png); background-repeat: no-repeat; background-size: 100%;'> 
+          <block wx:for="{{tabbar.list}}" wx:for-item="item" wx:key="index">
+              <navigator wx:if="{{item.flag}}" class="tabbar_nav" hover-class='none' url="{{ item.selected ? '' : item.pagePath}}" style="width:{{1/tabbar.list.length*100}}%; color:{{item.selected ? tabbar.selectedColor : tabbar.color}}" open-type="redirect">
+                  <image wx:if="{{item.flag}}" class="tabbar_icon" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+                  <image wx:else class="tabbar_icon_flag" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+                  <text class='tabbar_text'>{{item.text}}</text>
+              </navigator>
+              <navigator wx:else class="tabbar_nav" hover-class='none' url="{{item.pagePath}}" style="width:{{1/tabbar.list.length*100}}%; color:{{item.selected ? tabbar.selectedColor : tabbar.color}}" open-type="navigate">
+                  <image wx:if="{{item.flag}}" class="tabbar_icon" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+                  <image wx:else class="tabbar_icon_flag" src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+                  <text class='tabbar_text'>{{item.text}}</text>
+              </navigator>
+          </block>
+   </view> 
+</template>

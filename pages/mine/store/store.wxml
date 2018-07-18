@@ -1,0 +1,45 @@
+<!--pages/mine/store/store.wxml-->
+<view class='container'>
+  <swiper class="banner" indicator-dots='true' autoplay='true' indicator-active-color = '#FED70D' indicator-color='#FFFFFF'>
+    <swiper-item wx:for="{{banner}}" wx:key="id">
+      <image src='{{item.images}}' mode="widthFix" style='width: 100%;'></image>
+    </swiper-item>
+  </swiper>
+
+  <view class='creditsExchange'>
+    <view class='creditsExchange-credits border'>
+      <image class='creditsExchange-icon' src='/images/mine/store/icon-jifen.png'></image>
+      <text class='creditsExchange-title'>我的积分</text>
+      <text class='creditsExchange-record'>{{points}}</text>
+    </view>
+    <view class='creditsExchange-credits' bindtap='clickExchangelistButton'>
+      <image class='creditsExchange-icon' src='/images/mine/store/icon-duihuan.png'></image>
+      <text class='creditsExchange-title'>兑换记录</text>
+    </view>
+  </view>
+  <view class='notice'>
+    <image class='news-tag' src='/images/mine/store/icon-guangbo.png'></image>
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
+      <block wx:for="{{broad}}" wx:key='id'>
+        <swiper-item>
+          <view class="swiper_item">{{item}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <text class='giftRecommend'>— 礼品推荐 —</text>
+  <view class='gift_view'>
+    <view class='gift_view_cell' wx:for='{{pointlist}}' wx:key='id'>
+      <image class='gift_image' src='{{item.images}}'></image>
+      <text class='gift_title'>{{item.name}}</text>
+      <view class='gift_bottom'>
+        <view class='gift_bottom_record'>
+          <text class='gift_bottom_count'>{{item.price}}</text>
+          <text class='gift_bottom_title'>积分</text>
+        </view>
+         <image bindtap='clickExchangeButton' wx:if='{{item.number > 0}}' class='gift_button' src='/images/mine/store/icon-dui.png' id='{{index}}'></image> 
+         <image wx:else class='gift_button' src='/images/mine/store/icon-mei.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

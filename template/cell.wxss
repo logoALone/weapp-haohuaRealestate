@@ -1,0 +1,124 @@
+.cell {
+  width: 712rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 12rpx 20rpx;
+  background-color: #FFFFFF;
+}
+.leftview {
+  width: 215rpx;
+  height: 160rpx;
+  margin: 20rpx 30rpx 20rpx 20rpx;
+  /* background-color: red; */
+}
+.rightview {
+  display: flex;
+  margin-top: 20rpx;
+  flex-direction: column;
+  width: 430rpx;
+  height: 170rpx;
+}
+.houselist_headview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8rpx; 
+}
+.title {
+  font-size: 12pt;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  /* width:240rpx; */
+  display: inline;
+}
+.commission {
+  width: 32rpx;
+  height: 32rpx;
+  /* margin-top: 6rpx; */
+  margin-left: 16rpx; 
+  margin-right: 8rpx; 
+}
+.sum {
+  color: #FF7B3A;
+  font-size: 12pt;
+  position: relative;
+  top: -3rpx;
+  /* transform: translateY(20%); */
+}
+.subtitle {
+  font-size: 10pt;
+  color: #666666;
+  margin-bottom: 14rpx; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.tag {
+  margin-bottom: 12rpx;
+  /* height: 40rpx; */
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: flex-start */
+}
+.tag-title {
+  font-size: 8pt;
+  margin-right: 8rpx;
+  padding: 3rpx 12rpx;
+  border-radius: 2pt;
+}
+.blue {
+  background-color: #D1F1FF;
+  color: #31A3F0;
+}
+.green {
+  background-color: #DFF2E8;
+  color: #3AB789;
+}
+.orange {
+  background-color: #FEF1E0;
+  color: #EBAA62;
+}
+.bottomtag {
+  /* margin-top: 9pt; */
+  display: flex;
+  /* height: 22rpx; */
+  flex-direction: row;
+  justify-content: space-between; 
+}
+.bottomtag-countview {
+  border-right: 1px solid #A5A5A5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+
+}
+.bottomtag-icon {
+  width: 32rpx;
+  height: 20rpx;
+  /* background-color: red; */
+   margin-right: 14rpx;
+  margin-top: 2rpx; 
+}
+.collect {
+  width: 30rpx;
+  height: 25rpx; 
+}
+.comment {
+  width: 26rpx;
+  height: 28rpx; 
+}
+/* .space {
+  margin-left: 40rpx;
+} */
+.bottomtag-count {
+  font-size: 8pt;
+   margin-right: 56rpx; 
+}
+.none {
+  border-right-style: none;
+}

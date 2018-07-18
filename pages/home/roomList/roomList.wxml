@@ -1,0 +1,114 @@
+<!--看房记录-->
+<view class="container">
+  <!-- <view class="search-box">
+    <view class="input-wrap">
+      <image bindtap="search" src="/images/home/search.png"></image>
+      <input type="text" placeholder="搜索区域、价格房屋类型" placeholder-class="placeholder-class" value="{{searchText}}" bindinput="searchChange" />
+    </view>
+     <text bindtap="btnCancel" class="btn-sort">取消</text> 
+  </view> -->
+
+  <!--条件筛选-->
+  <view class="filter">
+    <view data-flag="structure" bindtap="tabChange" class="filter-item">区域
+      <image class='icon' wx:if="{{!show.structure}}" src="/images/down.png"></image>
+      <image class='icon' wx:if="{{show.structure}}" src="/images/up.png"></image>
+    </view>
+    <view data-flag="price" bindtap="tabChange" class="filter-item">售价
+      <image class='icon' wx:if="{{!show.price}}" src="/images/down.png"></image>
+      <image class='icon' wx:if="{{show.price}}" src="/images/up.png"></image>
+    </view>
+    <view data-flag="more" bindtap="tabChange" class="filter-item">更多
+      <image class='icon' wx:if="{{!show.more}}" src="/images/down.png"></image>
+      <image class='icon' wx:if="{{show.more}}" src="/images/up.png"></image>
+    </view>
+  </view>
+
+  
+
+  <!-- popup -->
+  <view wx:if="{{show.price==true||show.structure==true||show.more==true}}" class="popup">
+
+    <!-- structure -->
+    <view wx:if="{{show.structure}}" class="popup-structure">
+      <block wx:for="{{areaList}}">
+        <view data-flag="modal" bindtap="areaChange" data-code="{{item.code}}" data-name="{{item.name}}" class="{{item.name==selectedArea?'popup-item cm-color':'popup-item'}}">{{item.name}}</view>
+      </block>
+    </view>
+
+    <!-- price -->
+    <view wx:if="{{show.price}}" class="popup-structure">
+      <block wx:for="{{priceList}}">
+        <view data-flag="modal" bindtap="priceChange" data-value="{{item.value}}" data-min="{{item.min}}" data-name="{{item.name}}" class="{{item.name==selectedprice?'popup-item cm-color':'popup-item'}}">{{item.name}}</view>
+      </block>
+    </view>
+
+    <!-- more -->
+    <view wx:if="{{show.more}}" class="popup-structure">
+      <form  bindsubmit="moreSubmit" bindreset='moreReset'>
+        <view class="sub-cell" wx:for="{{moreList2}}">
+          <view class="sub-title">{{item.group}}</view>
+          <view class="{{item.active==sub?'sub-item sub-active':'sub-item'}}" wx:for="{{item.subs}}" wx:for-item="sub" wx:for-index="iSub">
+            <input type="text" hidden="true" name="{{item.active==sub?item.name:''}}" value="{{iSub}}" />
+            <view data-key="moreList2" data-index="{{index}}" data-value="{{iSub}}" data-flag="{{sub}}" bindtap="subChange">{{sub}}</view>
+          </view>
+        </view>
+        <view class="sub-btn-group">
+          <button class='resetbut' form-type="reset">清空</button>
+          <button class='submitBut' form-type="submit" bindtap="moreSubmit2">确定</button>
+        </view>
+      </form>
+    </view>
+  </view>
+
+  <!-- modal -->
+  <view wx:if="{{show.price==true||show.structure==true||show.more==true}}" bindtap="tabChange" data-flag="modal" class="modal"></view>
+
+
+  <!-- house list -->
+   <!-- <scroll-view scroll-top="{{scrollTop}}" scroll-with-animation="true" scroll-y="true" class="main-body">  -->
+    <!-- <import src="/template/cell.wxml"/> -->
+    <view wx:for="{{house}}" wx:key='id'>
+      <!-- <template is='housecell' data='{{...item}}'>
+      </template> -->
+      <view class='cell' bindtap='clickcell' data-index='{{index}}'>
+        <image class='leftview' src='{{item.comments}}'></image>
+        <view class='rightview'>
+          <view class='houselist_headview'>
+            <text class='title'>{{item.title}}</text>
+            <view>
+              <image class='commission' src='/images/template/commission.png'>佣</image>
+              <text class='sum'>{{item.commission}}{{item.commissionprice == -1 ? '' : '元' }}</text>
+            </view>
+          </view>
+          <text class='subtitle'>{{item.areaname}}-{{item.address}}</text>
+          <view class='tag'>
+            <block wx:for="{{item.tag}}" wx:for-index="idx" wx:for-item="itemLabel">
+              <text wx:if='{{idx==0}}' class='tag-title blue'>{{itemLabel}}</text>
+              <text wx:elif='{{idx==1}}' class='tag-title green'>{{itemLabel}}</text>
+              <text wx:else='{{idx==2}}' class='tag-title orange'>{{itemLabel}}</text>
+            </block> 
+            <!-- <text class='tag-title blue'>银行</text>
+            <text class='tag-title green'>地铁</text>
+            <text class='tag-title orange'>配套成熟</text>  -->
+          </view>
+          <view class='bottomtag'>
+            <view class='bottomtag-countview'>
+              <image class='bottomtag-icon' src='/images/template/browse.png'></image>
+              <text class='bottomtag-count'>{{item.click}}</text>
+            </view>
+            <view class='bottomtag-countview'>
+              <image class='bottomtag-icon space collect' src='/images/template/collection.png'></image>
+              <text class='bottomtag-count'>{{item.collection}}</text>
+            </view>
+            <view class='bottomtag-countview none'>
+              <image class='bottomtag-icon space comment' src='/images/template/comments.png'></image>
+              <text class='bottomtag-count'>{{item.consult}}</text>
+            </view>
+          </view> 
+        </view> 
+      </view>
+    </view>
+   <!-- </scroll-view>  -->
+
+</view>

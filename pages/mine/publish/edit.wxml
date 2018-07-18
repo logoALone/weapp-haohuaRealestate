@@ -1,0 +1,140 @@
+<view class='container' bindtouchmove='handletouchmove'>
+  <form bindsubmit='formSubmit' class='padding_bottom'>
+  <!-- <scroll-view class='form_view' scroll-y='true' bindscroll='bindscroll'>  -->
+     <view  class='headview'> 
+        <view class='head_left'>
+          <view class='inputview_top'>
+            <text class='inputview_title'>姓名</text>
+            <input class='inputview_input input_width' placeholder='请输入姓名' name='username' maxlength='5' value='{{datalist.house.username}}'/>
+          </view>
+          <view class='inputview_top'>
+            <text class='inputview_title'>手机</text>
+            <input class='inputview_input input_width' placeholder='请输入手机号' name='phone' type='number' maxlength='11' value='{{datalist.house.phone}}'/>
+          </view>
+        </view>
+        <view class='head_right'>
+          <image wx:if='{{imageSelect}}' class='head_addimage' src='/images/publish/addImage.png' bindtap='addIcon'></image>
+          <image wx:else class='head_addimage' src='{{imageIcon}}' bindtap='addIcon'></image>
+          <text class='head_text'>(上传本人头像)</text>
+        </view>
+      </view>
+      
+      <view class='inputview'>
+        <text class='inputview_title'>房屋类型</text>
+        <radio-group class="cm-radio-group" bindchange="radioChange" name="state">
+          <label class="radio" wx:for="{{items}}">
+            <radio color="#FDE104" value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>项目名称</text>
+        <input class='inputview_input' placeholder='请输入楼盘名称' name='title' maxlength='20' value='{{datalist.house.title}}'/>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>总价</text>
+        <view class='inputview_sub'>
+          <input class='inputview_input' placeholder='请输入总价' name='price' type='digit' maxlength='8' value='{{datalist.house.price}}'/>
+          <image class='icon_amount' src='/images/publish/wanyuan.png'></image>
+        </view>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>面积</text>
+        <view class='inputview_sub'>
+          <input class='inputview_input' placeholder='请输入面积' name='size' type='digit' maxlength='8' value='{{datalist.house.size}}'/>
+          <image class='icon_area' src='/images/publish/m2@2x.png'></image>
+        </view>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>转介佣金<text class='inputview_title_red'>*</text></text>
+        <!-- <view style='display: flex; align-items: center'> -->
+          <!-- <picker bindchange="bindSelectCommission" value="{{index}}" range="{{commissionTye}}">
+            <view class="picker">
+              {{commissionSelector ? '请选择' : commissionTtle}}
+            </view> -->
+          <!-- </picker> -->
+        <input class='inputview_input' placeholder='请输入金额或百分比' name='commission' maxlength='8' value='{{datalist.house.commission}}'/> 
+          <!-- <image class='icon right' src='/images/mine/next.png'></image> -->
+        <!-- </view> -->
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>产品业态</text>
+        <view class='inputview-right'>
+          <picker class='picker_text' bindchange='bindPickerChangeFormat' value="{{index}}" range="{{formatArr}}">{{format}}</picker>
+          <image class='icon' src='/images/mine/next.png'></image>
+        </view>
+
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>户型</text>
+        <input class='inputview_input' placeholder='请输入户型' name='type' maxlength='8' value='{{datalist.house.type}}'/>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>项目区域</text>
+        <view class='inputview-right'>
+          <view class='picker_text' bindtap="translate">{{areaflag ? '请选择' : selectCity}}</view>
+          <image class='icon' src='/images/mine/next.png'></image>
+        </view>
+      </view>
+      <view class='inputview'>
+        <text class='inputview_title'>详细地址</text>
+        <input class='inputview_input' placeholder='请输入详细地址' name='address' maxlength='20' value='{{datalist.house.address}}'/>
+      </view>
+      <view class='tagview'>
+        <text class='inputview_title'>标签(2-6个字)</text>
+        <view class='tag-cell'>
+          <block wx:for='{{taglist}}'>
+            <input data-id='{{index}}' bindinput='bindtaginput' class='tag-input' placeholder='输入标签' name='tag' maxlength='6' value='{{item}}' catchlongtap='deleteTag'/>
+          </block>
+          <image wx:if='{{taglist.length <= 2 ? true : false}}' class='tag-add' bindtap='addtag' src='/images/publish/add.png'></image>
+        </view>
+      </view>
+      <view class='details'>
+        <text class='inputview_title tag_title'>详情描述(200字以内)</text>
+        <view class='details-cell'>
+        <textarea name='content' class='details-textarea' placeholder="请输入项目详情描述" maxlength='200' hidden='{{hidden}}' value='{{datalist.house.content}}'/>
+        </view>
+      </view>
+
+      <view class='addimage'>
+        <text class='inputview_title tag_title'>项目照片(1-5张,建议横向尺寸)</text>
+        <view class='addimag-cell'>
+          <block wx:for='{{imagelist}}' wx:for-item="image">
+            <image data-id='{{index}}' class='addimage-item' src='{{image}}' catchlongtap='deleteImage' catchtap='checkImage'></image>
+          </block>
+          <image wx:if='{{imagelist.length <= 4 ? true : false}}' class='addimage-item' bindtap='addimage' src='/images/publish/addImage.png'></image>
+        </view> 
+      </view>
+    <!-- </scroll-view>  -->
+    <button class='submit_button' form-type='submit'>立即提交</button>
+  </form>
+
+  <view class="animation-element-wrapper" animation="{{animation}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView" data-id="444">
+     <view class="animation-element" catchtap="nono">
+        <text class="left-bt" catchtap="hiddenFloatView" data-id="555">取消</text>
+        <text class="right-bt" catchtap="hiddenFloatView" data-id="666">确定</text>
+          <view class="line"></view> 
+
+        <picker-view indicator-style = "height: 50rpx;" value="{{value}}" bindchange="bindChange" catchtap="nono">
+        <!--省-->
+        <picker-view-column>
+           <view wx:for="{{provinces}}" wx:for-item="sheng" wx:key="">
+             {{sheng.name}}
+          </view>
+        </picker-view-column>
+        <!--地级市-->
+        <picker-view-column>
+          <view wx:for="{{citys}}" wx:key="">
+            {{item.name}}
+          </view>
+        </picker-view-column>
+        <!--区县-->
+        <picker-view-column>
+          <view wx:for="{{countys}}" wx:key="">
+            {{item.name}}
+          </view>
+        </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</view>

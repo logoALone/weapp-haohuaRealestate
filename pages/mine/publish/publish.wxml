@@ -1,0 +1,50 @@
+<!--pages/mine/publish/publish.wxml-->
+<import src="/template/cell.wxml"/>
+<view wx:for="{{house}}" wx:key='id'>
+  <view class='cell' bindtap='clickcell' data-index='{{index}}'>
+    <view class='head_cell'>
+      <image  wx:if="{{item.examine == 1}}" class='state_image' src='/images/template/state_1.png'></image>
+      <image  wx:elif="{{item.examine == 3}}"class='state_image' src='/images/template/state_3.png'></image>
+      <image class='leftview' src='{{item.comments}}'></image>
+      <view class='rightview'>
+        <view class='houselist_headview'>
+          <text class='title'>{{item.title}}</text>
+          <view>
+            <image class='commission' src='/images/template/commission.png'/>
+            <text class='sum'>{{item.commission}}{{item.commissionprice == -1 ? '' : '元' }}</text>
+          </view>
+        </view>
+        <text class='subtitle'>{{item.areaname}}-{{item.address}}</text>
+        <view class='tag'>
+          <block wx:for="{{item.tag}}" wx:for-index="idx" wx:for-item="itemLabel">
+            <text wx:if='{{idx==0}}' class='tag-title blue'>{{itemLabel}}</text>
+            <text wx:elif='{{idx==1}}' class='tag-title green'>{{itemLabel}}</text>
+            <text wx:else='{{idx==2}}' class='tag-title orange'>{{itemLabel}}</text>
+          </block> 
+        </view>
+        <view class='bottomtag'>
+          <view class='bottomtag-countview'>
+            <image class='bottomtag-icon' src='/images/template/browse.png'></image>
+            <text class='bottomtag-count'>{{item.click}}</text>
+          </view>
+          <view class='bottomtag-countview'>
+            <image class='bottomtag-icon space collect' src='/images/template/collection.png'></image>
+            <text class='bottomtag-count'>{{item.collection}}</text>
+          </view>
+          <view class='bottomtag-countview none'>
+            <image class='bottomtag-icon space comment' src='/images/template/comments.png'></image>
+            <text class='bottomtag-count'>{{item.consult}}</text>
+          </view>
+        </view> 
+      </view> 
+    </view>
+    <view class='bottom_cell' catchtap='clickEdit' data-index='{{index}}'>
+      <view class='bottom_button border-right'>
+        <text class='btn_title'>编辑</text>
+      </view>
+      <view class='bottom_button' catchtap='clickDelete' data-index='{{index}}'>
+        <text class='btn_title'>删除</text>
+      </view>
+    </view>
+  </view>
+</view>

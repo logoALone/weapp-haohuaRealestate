@@ -1,0 +1,2 @@
+/* pages/mine/publish/publish.wxss */
+@import "/template/cell-publish.wxss" 

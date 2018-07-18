@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/mine/mine",
+    "pages/publish/publish",
+    "pages/publish/upload/upload",
+    "pages/mine/store/store",
+    "pages/mine/collect/collect",
+    "pages/mine/publish/publish",
+    "pages/mine/exchange/exchange",
+    "pages/mine/aboutus/aboutus",
+    "pages/home/roomList/roomList",
+    "pages/room/details",
+    "pages/mine/store/address",
+    "pages/switchcity/switchcity",
+    "pages/mine/publish/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "浩华房产转介平台",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F2F2F2"
+  }
+}

@@ -1,0 +1,120 @@
+<!--pages/room/details.wxml-->
+<view class='container'>
+  <view style='height: 562rpx'>
+    <swiper class="banner" autoplay='true' indicator-active-color='#FED70D' indicator-color='#FFFFFF' bindchange='change'>
+      <swiper-item wx:for="{{datalist.images}}" wx:key="id">
+        <image src='{{item.images}}' mode="widthFix" style='width: 100%;' bindtap='checkImage' data-index='{{index}}'></image>
+      </swiper-item>
+    </swiper>
+    <text class='number'>{{index}}/{{count}}</text>
+  </view>
+  <view class='headView-background'>
+
+    <view class='titlview'>
+      <view class='titleview-left'>
+        <text class='titlview-font'>{{datalist.house.title}}<text class='titlview-tag'>{{propertype[datalist.house.propertype - 1]}}</text></text>
+      </view>  
+      <view class='titleview-right'>
+        <text class='titleview-right-price'>{{datalist.house.commission}}{{datalist.house.commissionprice == -1 ? '元' : '元' }}</text>
+        <text class='titleview-right-tag'>佣金</text>
+      </view> 
+    </view>
+
+    <view class='infoview'>
+      <view class='infoview-cell'>
+        <text class='infoview-cell-title'>售价</text>
+        <text class='infoview-cell-numerical'>{{datalist.house.price}}万</text>
+      </view>
+      <view class='line_left'></view>
+      <view class='infoview-cell'>
+        <text class='infoview-cell-title'>房型</text>
+        <text class='infoview-cell-numerical'>{{datalist.house.type}}</text>
+      </view>
+      <view class='line_right'></view>
+      <view class='infoview-cell'>
+        <text class='infoview-cell-title'>面积</text>
+        <text class='infoview-cell-numerical'>{{datalist.house.size}}㎡</text>
+      </view>
+    </view>
+
+    <view class='location-view'>
+      <view class='location-subview'>
+        <image class='location-icon' src='/images/details/location.png'></image>
+        <text class='location-text'>{{datalist.house.areaname}}-{{datalist.house.address}}</text>
+      </view>
+       <image class='next-icon' src='/images/details/next.png'></image> 
+    </view>
+
+    <view class='describe-view'>
+      <view class='describe-tagview'>
+        <block wx:for='{{datalist.label}}'>
+          <!-- <text class='describe-tag'>{{item}}</text> -->
+          <text wx:if='{{index==0}}' class='describe-tag blue'>{{item}}</text>
+          <text wx:elif='{{index==1}}' class='describe-tag green'>{{item}}</text>
+          <text wx:else='{{index==2}}' class='describe-tag orange'>{{item}}</text>
+        </block>
+      </view>
+      <view class='describe-bottom'>
+          <text class='describe-details'><text class='describe-title'>房源描述:</text>{{datalist.house.content}}</text>
+      </view> 
+    </view>
+
+  </view>
+
+  <text class='giftRecommend'>— 发布人 —</text>
+  
+  <view class='contact-view'>
+    <!-- <view class='contact-left'> -->
+      <image class='contact-avatar' src='{{datalist.house.userimage != 0 ? datalist.house.userimage : "/images/mine/avatar.png" }}'></image>
+      <!-- <view class='contact-info'> -->
+      <text class='contact-name'>{{datalist.house.username}}</text>
+        <!-- <text class='contact-title'>(经纪人)</text> -->
+      <!-- </view> -->
+    <!-- </view> -->
+    <!-- <image class='contact-qrcode'></image> -->
+  </view>
+
+  <text class='giftRecommend'>— 评论 —</text>
+
+
+  <view class='comments-view'>
+    <block wx:for='{{datalist.comment}}'>
+    <view class='comments'>
+      <view class="comments-cell {{index == 0 ? 'active-tag':''}}">
+        <image class='comments-avatar' src='{{item.image.length != 0 ? item.image : "/images/mine/avatar.png" }}'></image>
+        <view class='comments-info'>
+          <text class='comments-name'>{{item.name}}</text>
+          <text class='comments-time'>{{item.datetime}}</text>
+          <text class='comments-content'>{{item.comment}}</text>
+        </view>
+      </view>
+    </view>
+    </block>
+  </view>
+
+
+
+  <view class='nav-wrap'>
+    <view class='line'></view>
+    <view class='click-button' bindtap='clickCollectionButton'>
+      <image class='click-button-image1' src=' {{collection ? "/images/template/collection_sel.png" : "/images/template/collection2.png"}}'></image>
+      <text class='click-button-title'>收藏</text>
+    </view>
+    <view class='click-button' bindtap="bindReply">
+      <image class='click-button-image2' src='/images/template/comments2.png'></image>
+      <text class='click-button-title'>评论</text>
+    </view>
+    <view class='call-button' bindtap='makeCall'>
+      <text class='call-button-title'>立即联系</text>
+    </view>
+  </view>
+
+  <view class="release" wx:if='{{releaseFocus}}'>
+    <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}"
+  placeholder="回复 {{releaseName}}" bindinput='textinput' value='{{comment}}'></textarea>
+    <view class="submit" bindtap='addComment'>发送</view>
+  </view>
+
+  <image wx:if='{{isShare}}' class='home_but' bindtap='goBackHome' src='/images/details/backhome.png'></image>
+
+</view>

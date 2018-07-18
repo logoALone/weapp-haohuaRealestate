@@ -1,0 +1,33 @@
+.back {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 150rpx;
+}
+.tabbar_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     align-items: center; 
+    font-size: 28rpx;
+    height: 100%;
+}
+.tabbar_icon{
+    margin-top: 72rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+.tabbar_icon_flag{
+    margin-top: 26rpx;
+    margin-bottom: -5rpx;  
+    width: 100rpx;
+    height: 100rpx;
+}
+.tabbar_text {
+  font-size: 9pt;
+}

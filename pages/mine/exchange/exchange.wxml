@@ -1,0 +1,14 @@
+<!--pages/mine/exchange/exchange.wxml-->
+<view class='container'>
+  <view class='exchangelist'>
+    <view class='exchangelist_cell' wx:for='{{datalist}}'>
+      <image class='exchangelist_icon' src='{{item.images}}'></image>
+      <view class='exchangelist_midle'>
+        <text class='exchangelist_title'>{{item.name}}</text>
+        <text class='exchangelist_date'>{{item.datetime}}</text>
+      </view>
+      <text class='exchangelist_record'>{{item.point}} 积分</text>
+    </view>
+  </view>
+  <text class='nomoredata'>没有更多了</text>
+</view>

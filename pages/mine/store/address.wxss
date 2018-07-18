@@ -1,0 +1,150 @@
+/* pages/mine/store/address.wxss */
+.input-view {
+  display: flex;
+  width: 100%;
+  height: 80rpx;
+  border-top: 1px solid #ECECEC;
+  background-color: #FFFFFF;
+  align-items: center;
+}
+.title {
+  margin-left: 40rpx;
+  font-size: 13pt
+}
+.input-contaniner {
+  margin-left: 40rpx;
+  font-size: 13pt;
+  width: 70%;
+}
+.left {
+  margin-left: 68rpx;
+}
+.choosearea-view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80rpx;
+  border-top: 1px solid #ECECEC;
+  background-color: #FFFFFF;
+  align-items: center
+}
+.choose {
+  margin-left: 40rpx;
+  width: 60%;
+  font-size: 13pt;
+}
+.input-text {
+  margin-left: 40rpx;
+  font-size: 13pt;
+  width: 70%;
+}
+.icon {
+  width: 7px;
+  height: 12px;
+  /* background-color: red; */
+}
+.input-textView {
+  display: flex;
+  width: 100%;
+  height: 160rpx;
+  border-top: 1px solid #ECECEC;
+  background-color: #FFFFFF;
+  align-items: flex-start;
+}
+.input-textarea {
+  height: 160rpx;
+  margin-left: 40rpx;
+  font-size: 11pt;
+  width: 70%;
+}
+.top {
+  margin-top: 20rpx;
+}
+.submit_button {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* color: #FFFFFF; */
+  background: #FEDC08;
+  border-radius: 0px;
+  font-size: 13pt;
+}
+button::after{
+  border: none;
+}
+picker-view{
+  background-color: white;
+  padding: 0;
+  width: 100%; 
+  height: 380rpx;
+  bottom: 0;
+  position: fixed;
+}
+
+picker-view-column view{
+  vertical-align:middle; 
+  font-size: 28rpx;
+  line-height: 28rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----------------------------------------- */
+
+.animation-element-wrapper {
+  display: flex;  
+  position: fixed;
+  left: 0;
+  top:0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.animation-element {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 470rpx;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.animation-button {
+  margin-top: 20rpx;
+  top:20rpx;
+  width: 400rpx;
+  height: 100rpx; 
+  line-height: 100rpx; 
+  align-items:center;
+}
+
+
+text{
+  color: #999999;
+  display: inline-flex;  
+  position: fixed;
+  margin-top: 20rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.left-bt{
+  left: 30rpx;
+}
+.right-bt {
+  right: 30rpx;
+}
+
+.line{
+  display: block;
+  position: fixed;
+  height: 1rpx;
+  width: 100%;
+  margin-top: 89rpx; 
+  background-color: #eeeeee;
+}

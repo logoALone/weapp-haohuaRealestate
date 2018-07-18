@@ -1,0 +1,87 @@
+<!--pages/mine/mine.wxml-->
+<import src="/template/tabbar.wxml"/>
+<view class='container'>
+  <template is="tabbar" data="{{tabbar}}"/>
+  <view class='headView'>
+    <button class='logo_button' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>
+      <image wx:if='{{uesrinfoFlag}}' class='logoimg' src='{{userinfo.avatarUrl}}'></image>
+      <image wx:else class='logoimg' src="/images/mine/avatar.png" ></image>
+      <text class='headiew_title'>{{uesrinfoFlag ? userinfo.nickName : '微信一键登录'}}</text>
+    </button>
+  </view>
+  <view class='midleview'>
+    <view class='midleview_container'>
+      <text class='midleview_container_count'>{{userData.issue}}</text>
+      <text class='midleview_container_title'>发布</text>
+    </view>
+    <view class='midleview_container'>
+      <text class='midleview_container_count'>{{userData.click}}</text>
+      <text class='midleview_container_title'>浏览</text>
+    </view>
+    <view class='midleview_container'>
+      <text class='midleview_container_count text_color'>{{userData.points}}</text>
+      <text class='midleview_container_title'>积分</text>
+    </view>
+  </view>
+
+  <view class='bottomview'>
+    <block wx:for='{{list}}' wx:key='id'>
+      <view wx:if='{{index==0}}' bindtap='clickCell' class='bottomview_cell' data-index='{{index}}'>
+        <view class='left_cell'>
+          <image class='icon_0' src='{{item.icon}}'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png' mode='aspectFill'></image>
+        </view>
+      </view>
+      <view wx:elif='{{index==1}}' bindtap='clickCell' class='bottomview_cell' data-index='{{index}}'>
+        <view class='left_cell'>
+          <image class='icon_1' src='{{item.icon}}'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png' mode='aspectFill'></image>
+        </view>
+      </view>
+      <view wx:elif='{{index==2}}' bindtap='clickCell' class='bottomview_cell' data-index='{{index}}'>
+        <view class='left_cell'>
+          <image class='icon_2' src='{{item.icon}}'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png' mode='aspectFill'></image>
+        </view>
+      </view>
+      <view wx:elif='{{index==3}}' bindtap='clickCell' class='bottomview_cell' data-index='{{index}}'>
+        <view class='left_cell'>
+          <image class='icon_3' src='{{item.icon}}'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png' mode='aspectFill'></image>
+        </view>
+      </view>
+      <view wx:elif='{{index==4}}' bindtap='clickCell' class='bottomview_cell' data-index='{{index}}'>
+        <view class='left_cell'>
+          <image class='icon_4' src='{{item.icon}}'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png' mode='aspectFill'></image>
+        </view>
+      </view>
+      <button wx:else class="cs_button" open-type="contact" session-from="weapp">
+        <view class='left_cell'>
+          <image class='icon' src='{{item.icon}}' mode='widthFix'></image>
+          <text class='titleLabel'>{{item.title}}</text>
+        </view>
+        <view class='right_cell'>
+          <image class='nextIcon' src='/images/mine/next.png'></image>
+        </view>
+      </button>
+    </block>  
+  </view>
+</view>
+
+

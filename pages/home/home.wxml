@@ -1,0 +1,100 @@
+<!--pages/home/home.wxml-->
+<import src="/template/tabbar.wxml"/>
+<view class='container'>
+
+  <template is="tabbar" data="{{tabbar}}"/>
+
+  <view class='headview'>
+    <view class='searcview'>
+      <view class='searcview_left' bindtap='switchCity'>
+        <view class='positioning'>{{city}}</view>
+        <image class='positioning_icon' src='/images/home/drop-down.png'></image>
+      </view>
+      <view class='line'></view>
+      <view class='searcview_right' bindtap='bindRoomSearchlist'>
+        <image class='seraching_icon' src='/images/home/search.png'></image>
+        <input class='seraching' placeholder-class="placeholder-class" placeholder='搜索区域、价格、房屋类型'></input>
+      </view>
+    </view>
+  </view>
+
+  <swiper class="banner" indicator-dots = 'true' autoplay='true' indicator-active-color='#FED70D' indicator-color='#FFFFFF'>
+    <swiper-item wx:for="{{images}}" wx:key="id">
+      <image src='{{item.images}}' mode="widthFix" style='width: 100%;'></image>
+    </swiper-item>
+  </swiper>
+
+  <view class='midleView'>
+    <view class='button' bindtap='bindRoomNewlist'>
+      <image class='midleView-icon' src='/images/home/new.png'></image>
+      <label class='text'>新房</label>
+    </view>
+    <view class='button' bindtap='bindRoomSeclist'>
+      <image class='midleView-icon' src='/images/home/second.png'></image>
+      <label class='text'>二手房</label>
+    </view>
+    <button class="cs_button" open-type="contact" session-from="weapp">
+      <image class='midleView-icon' src='/images/home/service.png'></image>
+      <label class='text'>客服</label>
+    </button>  
+  </view>
+
+  <view class='news'>
+    <text class='news-tag'>最新动态</text>
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
+      <block wx:for="{{msgList}}">
+        <swiper-item>
+          <view class="swiper_item">{{item.content}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="tab-bar">
+    <text data-flag="house" bindtap="tab_change" class="{{tab_flag=='house'?'tab-active':'tab-inactive'}}">热门发布</text>
+    <text data-flag="police" bindtap="tab_change" class="{{tab_flag=='police'?'tab-active':'tab-inactive'}}">最新发布</text>
+  </view>
+
+
+  <view class='bottom_view'>
+    <block wx:for="{{house}}" wx:key='id'>
+      <view class='cell' bindtap='clickcell' data-index='{{index}}'>
+        <image class='leftview' src='{{item.comments}}'></image>
+        <view class='rightview'>
+          <view class='houselist_headview'>
+            <text class='title'>{{item.title}}</text>
+            <view>
+              <image class='commission' src='/images/template/commission.png'>佣</image>
+              <text class='sum'>{{item.commission}}{{item.commissionprice == -1 ? '' : '元' }}</text>
+            </view>
+          </view>
+          <text class='subtitle'>{{item.areaname}}-{{item.address}}</text>
+          <view class='tag'>
+            <block wx:for="{{item.tag}}" wx:for-index="idx" wx:for-item="itemLabel">
+              <text wx:if='{{idx==0}}' class='tag-title blue'>{{itemLabel}}</text>
+              <text wx:elif='{{idx==1}}' class='tag-title green'>{{itemLabel}}</text>
+              <text wx:else='{{idx==2}}' class='tag-title orange'>{{itemLabel}}</text>
+            </block> 
+          </view>
+          <view class='bottomtag'>
+            <view class='bottomtag-countview'>
+              <image class='bottomtag-icon' src='/images/template/browse.png'></image>
+              <text class='bottomtag-count'>{{item.click}}</text>
+            </view>
+            <view class='bottomtag-countview'>
+              <image class='bottomtag-icon space collect' src='/images/template/collection.png'></image>
+              <text class='bottomtag-count'>{{item.collection}}</text>
+            </view>
+            <view class='bottomtag-countview none'>
+              <image class='bottomtag-icon space comment' src='/images/template/comments.png'></image>
+              <text class='bottomtag-count'>{{item.consult}}</text>
+            </view>
+          </view> 
+        </view> 
+      </view>
+    </block>
+  </view>
+
+  <image wx:if='{{sign}}' class='sigiin' bindtap='clickSigiin' src='/images/home/sign.png'></image>
+
+</view> 
